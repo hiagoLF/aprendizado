@@ -5,3 +5,6 @@
 
 ## Lives - Pré Semana JS-Expert - Erick Wendel
 * Repositório: https://github.com/ErickWendel/lives-aquecimento02-javascript-expert
+
+## Desenvolvendo Chat com React.js, Node.js e Sockets
+* Repositório: https://github.com/adrianhajdin/project_chat_application
