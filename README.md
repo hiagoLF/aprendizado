@@ -8,3 +8,6 @@
 
 ## Desenvolvendo Chat com React.js, Node.js e Sockets
 * Repositório: https://github.com/adrianhajdin/project_chat_application
+
+## Criando Hooks Personalizados para o React
+* Repositório: https://github.com/Gustavo-Kuze/youtube-crie-seu-proprio-hook
