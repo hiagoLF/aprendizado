@@ -2,6 +2,7 @@
 
 # Estudos em SQL
 
+### Basic
 ```sql
 -- Criar banco de dados
 create database cadastro
@@ -122,4 +123,31 @@ where idcurso  = '3';
 
 -- Remover todas as linhas de cursos sem remover a tabela
 truncate cursos;
+```
+
+
+### Select
+```sql
+select * from cursos
+order by carga;
+
+select * from cursos
+order by carga desc;
+
+select nome, descricao from cursos
+order by carga desc;
+
+select nome, descricao from cursos
+where carga = '10'
+order by carga desc;
+
+select * from cursos
+where carga < '100'
+order by carga asc, nome asc;
+
+select * from cursos
+where carga BETWEEN 40 AND 200;
+
+select * from cursos
+where carga in ('3', '5');
 ```
