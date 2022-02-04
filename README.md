@@ -158,3 +158,70 @@ where carga BETWEEN 40 AND 200;
 select * from cursos
 where carga in ('3', '5');
 ```
+
+### Relations
+```sql
+use cadastro;
+
+alter table gafanhotos add cursopreferido int;
+
+describe gafanhotos 
+
+-- Criar relação, colocando chave estrangeira de cursos em gafanhotos
+-- idcurso vai ser armazenado em cursopreferido 
+alter table gafanhotos
+add foreign key (cursopreferido)
+references cursos(idcurso);
+
+-- Relacionando linhas de tabelas diferentes
+update gafanhotos set cursopreferido = '3' where id = '7';
+
+-- Fazendo união na consulta
+select * from gafanhotos join cursos
+on gafanhotos.cursopreferido = cursos.idcurso;
+
+-- Pegando campos específicos no join
+-- inner join é semelhante a join sozinho
+select gafanhotos.nome, cursos.nome from gafanhotos inner join cursos
+on gafanhotos.cursopreferido = cursos.idcurso;
+
+-- Alias
+select g.nome, c.nome
+from gafanhotos as g inner join cursos as c
+on g.cursopreferido = c.idcurso;
+
+-- Trazer os resultados independente de haver relação ou não
+select g.nome, c.nome
+from gafanhotos as g left outer join cursos as c
+on g.cursopreferido = c.idcurso;
+
+-- Criação de tabela de relação Muitos para Muitos
+create table gafanhoto_assiste_curso(
+	id int not null auto_increment,
+	data date,
+	idgafanhoto int,
+	idcurso int,
+	primary key (id),
+	foreign key (idgafanhoto) references gafanhotos (id),
+	foreign key (idcurso) references cursos (idcurso)
+) default charset = utf8;
+
+insert into gafanhoto_assiste_curso values
+(default, '2014-03-01', '1', '2'),
+(default, '2014-03-01', '3', '1'),
+(default, '2014-03-01', '4', '5'),
+(default, '2014-03-01', '5', '3'),
+(default, '2014-03-01', '3', '5'),
+(default, '2014-03-01', '2', '3'),
+(default, '2014-03-01', '1', '5');
+
+
+select * from gafanhoto_assiste_curso;
+
+-- Select em relação M-M
+select g.nome pessoa, c.nome curso from gafanhotos g
+join gafanhoto_assiste_curso a
+on g.id = a.idgafanhoto
+join cursos c
+on c.idcurso = a.idcurso;
+```
