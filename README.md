@@ -2,7 +2,14 @@
 
 # Estudos em SQL
 
+### Criando container MariaDB com docker
+
+```bash
+❯ docker run -d --name mariadb-server -p 3306:3306 -e "MYSQL_ROOT_PASSWORD=root" mariadb
+```
+
 ### Basic
+
 ```sql
 -- Criar banco de dados
 create database cadastro
@@ -46,7 +53,7 @@ create table pessoas (
 	peso decimal(5,2),
 	altura decimal(3,2),
 	nacionalidade varchar(20) default 'Brasil',
-	
+
 	PRIMARY KEY (id)
 ) default charset = utf8;
 
@@ -125,8 +132,8 @@ where idcurso  = '3';
 truncate cursos;
 ```
 
-
 ### Select
+
 ```sql
 select * from cursos
 order by carga;
